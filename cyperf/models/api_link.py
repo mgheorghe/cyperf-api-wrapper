@@ -20,7 +20,13 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing import Optional, Set, Union, GenericAlias, get_args
+from typing import Optional, Set, Union, get_args
+try:
+    # Try importing from the standard library (works on Python 3.9+)
+    from typing import GenericAlias
+except ImportError:
+    # Fallback to typing_extensions package (works on Python 3.8 and below)
+    from typing_extensions import GenericAlias
 from typing_extensions import Self
 from pydantic import Field, PrivateAttr
 
